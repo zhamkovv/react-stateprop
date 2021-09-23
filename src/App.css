@@ -19,7 +19,18 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.App-menu {
+  background-color: #00a8d6;
+  /* min-height: 32vh; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: calc(10px + 2vmin);
+  padding: 1rem;
 
+}
+a   {color: #282c34;text-decoration-color:tomato;}
 .App-link {
   font-size: calc(18px + 2vmin);
   color: #00a8d6;
