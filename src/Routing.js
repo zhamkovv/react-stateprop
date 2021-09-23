@@ -78,6 +78,8 @@ const Routing = () => {
 
 
           <Switch>
+          <Redirect from="/" to="/HomePage"></Redirect>
+
             {listComponents.map((i, key) => (
               <Route path={"/" + i.type.name + "/"} key={key}>
                 <h1>{i.type.name}</h1>
