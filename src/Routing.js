@@ -75,24 +75,18 @@ const Routing = () => {
         <nav>
           <div className='App-menu'>{menu}</div>
         </nav>
-
-
           <Switch>
-          <Redirect from="/" to="/HomePage"></Redirect>
-
-            {listComponents.map((i, key) => (
+                      {listComponents.map((i, key) => (
               <Route path={"/" + i.type.name + "/"} key={key}>
                 <h1>{i.type.name}</h1>
                 {i}
               </Route>
             ))}
           </Switch>
+          <Redirect from="/" to="/HomePage/"></Redirect>
           </BrowserRouter>
         </div>
-
     </div>
-
-
   );
 };
 
