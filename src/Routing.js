@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import "./App.css";
 import logo from "./logo.svg";
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Switch, Route, NavLink, Redirect } from "react-router-dom";
 
 import MyStateComp from "./MyStateComp";
 import EventCounter from "./EventCouner";
