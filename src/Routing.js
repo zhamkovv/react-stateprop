@@ -8,7 +8,10 @@ import EventCounter from "./EventCouner";
 import UserComp from "./UserComp";
 import ForwardBut from "./ForwardBut";
 import ContextMind from "./ContextMind";
+import MyContext from "./MyContext";
 import LifeCycleMedia from "./LifeCycleMedia";
+import AxiosJson from "./AxiosJson";
+
 
 const withPage = (Component) => {
   const WrapperPage = (props) => (
@@ -37,12 +40,14 @@ const EventCounters = () => (
 );
 const listComponents = [
   <Homepage />,
+  <AxiosJson/>,
   <ForwardBut />,
   <MyStateComp />,
   <EventCounters />,
   <UserComp name='Events Handling with HoC props.name' />,
   <ContextMind />,
-  <LifeCycleMedia/>
+  <LifeCycleMedia/>,
+  <MyContext/>
 ];
 
 const getDisplayName = (WrappedComponent) => {

@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-//import App from "./App";
-
-import Routing from "./Routing";
+import "./App.css";
+import AxiosJson from "./AxiosJson";
+// import Routing from "./Routing";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routing />
+    <AxiosJson />
   </React.StrictMode>,
   document.getElementById("root")
 );
