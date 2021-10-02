@@ -1,22 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import "./App.css";
 import axios from "axios";
 
 function AxiosJson() {
-  const data = [];
-  axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
-    data = response.data;
-  });
+  let [data, setData] = useState([]);
+  axios
+    .get("https://jsonplaceholder.typicode.com/posts")
+    .then((response) => setData(response.data));
   return (
     <>
       <div className='App'>
-        <header>
-          <h1>It's your sheeeeet!</h1>
-        </header>
-        <ul>
-          {data.map((i, index) => (
-            <li key={index}>{i.title}{i.body} {console.log(i.title)}</li>
+        <span></span>
+        <h5>
+          {data.map((i,index) => (
+            <span key={index}>{i.body}</span>
           ))}
-        </ul>
+        </h5>
       </div>
     </>
   );

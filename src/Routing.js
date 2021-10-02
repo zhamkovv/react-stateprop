@@ -11,6 +11,7 @@ import ContextMind from "./ContextMind";
 import MyContext from "./MyContext";
 import LifeCycleMedia from "./LifeCycleMedia";
 import AxiosJson from "./AxiosJson";
+import ScooterShop from './ScooterShop';
 
 
 const withPage = (Component) => {
@@ -47,7 +48,8 @@ const listComponents = [
   <UserComp name='Events Handling with HoC props.name' />,
   <ContextMind />,
   <LifeCycleMedia/>,
-  <MyContext/>
+  <MyContext/>,
+  <ScooterShop />
 ];
 
 const getDisplayName = (WrappedComponent) => {
@@ -88,7 +90,7 @@ const Routing = () => {
               </Route>
             ))}
           </Switch>
-          <Redirect from="/" to="/HomePage/"></Redirect>
+          <Redirect from="/123" to="/HomePage/"></Redirect>
           </BrowserRouter>
         </div>
     </div>
