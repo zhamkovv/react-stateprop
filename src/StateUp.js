@@ -1,47 +1,62 @@
 import React, { useState } from "react";
-
 import CountriesList from "./CountriesList";
 import Country from "./Country";
 
 function StateUp() {
-	const [countries, setCountries] = useState([
-		{ name: "СССР", description: "Союз нерушимый республик свободных <br/>Сплотила навеки Великая Русь.<br/> Да здравствует созданный волей народов<br/> Единый, могучий Советский Союз!" },
-		{ name: "Россия", description: "Россия — священная наша держава,<br/>Россия — любимая наша страна.<br/>Могучая воля, великая слава — <br/>Твоё достоянье на все времена!" },
-        { name: "США", description: "О, скажи, видишь ты в первых солнца лучах,<br/>Что средь битвы мы шли на вечерней зарнице?<br/>        В синем с россыпью звёзд полосатый наш флаг<br/>        Красно-белым огнём с баррикад вновь явится.<br/>        Ночью сполох ракет на него бросал свет —<br/>        Это подлым врагам был наш гордый ответ.<br/>        Неужели, скажи, он теперь навсегда<br/>        Где свободных оплот и где храбрых страна?" },
-		{ name: "Англия", description: "Боже, храни нашу великодушную Королеву,<br/> Да здравствует наша благородная Королева, <br/>Боже, храни Королеву. <br/>Дай ей ратных побед,<br/> Счастья и славы,<br/> И долгого царствования над нами, <br/>Боже, храни Королеву." },
-	]);
+  const [countries, setCountries] = useState([
+    {
+      name: "СССР",
+      description:
+        "Союз нерушимый республик свободных \r\nСплотила навеки Великая Русь.\r\n Да здравствует созданный волей народов\r\n Единый, могучий Советский Союз!",
+    },
+    {
+      name: "США",
+      description:
+        "О, скажи, видишь ты в первых солнца лучах,\r\nЧто средь битвы мы шли на вечерней зарнице?\r\n        В синем с россыпью звёзд полосатый наш флаг\r\n        Красно-белым огнём с баррикад вновь явится.\r\n        Ночью сполох ракет на него бросал свет —\r\n        Это подлым врагам был наш гордый ответ.\r\n        Неужели, скажи, он теперь навсегда\r\n        Где свободных оплот и где храбрых страна?",
+    },
+    {
+      name: "Англия",
+      description:
+        "Боже, храни нашу великодушную Королеву,\r\n Да здравствует наша благородная Королева, \r\nБоже, храни Королеву. \r\nДай ей ратных побед,\r\n Счастья и славы,\r\n И долгого царствования над нами, \r\nБоже, храни Королеву.",
+    },
+  ]);
 
-	const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-	const handlerChangeCountry = (n, description) => {
-		setCountries(
-			countries.map((country, index) => {
-				if (index === n) {
-					return {
-						...country,
-						description,
-					};
-				}
+  const handlerChangeCountry = (n, description) => {
+    setCountries(
+      countries.map((country, index) => {
+        if (index === n) {
+          return {
+            ...country,
+            description,
+          };
+        }
 
-				return country;
-			})
-		);
-	};
+        return country;
+      })
+    );
+  };
 
-	const handlerSelectCountry = (n) => setCurrentIndex(n);
+  const handlerSelectCountry = (n) => setCurrentIndex(n);
 
-	return (
-		<div>
-			<Country
-				countries={countries}
-				onChangeCountry={handlerChangeCountry}
-				currentIndex={currentIndex}
-			/>
-                        <h2>Выберите страну:</h2>
+  return (
+    <>
+      <h2>Выберите страну:</h2>
+      <div className='App-content'>
+        <Country
+          countries={countries}
+          onChangeCountry={handlerChangeCountry}
+          currentIndex={currentIndex}
+        />
 
-			<CountriesList countries={countries} onSelectCountry={handlerSelectCountry} />
-		</div>
-	);
+        <CountriesList
+          countries={countries}
+          onSelectCountry={handlerSelectCountry}
+        />
+      </div>
+    </>
+  );
 }
 
 export default StateUp;
