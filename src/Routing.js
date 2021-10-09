@@ -1,19 +1,22 @@
-import React, { Fragment } from "react";
+import React from "react";
+import {
+  BrowserRouter, NavLink,
+  Redirect, Route, Switch
+} from "react-router-dom";
 import "./App.css";
-import logo from "./logo.svg";
-import { BrowserRouter, Switch, Route, NavLink, Redirect } from "react-router-dom";
-
-import MyStateComp from "./MyStateComp";
-import EventCounter from "./EventCouner";
-import UserComp from "./UserComp";
-import ForwardBut from "./ForwardBut";
-import ContextMind from "./ContextMind";
-import MyContext from "./MyContext";
-import LifeCycleMedia from "./LifeCycleMedia";
 import AxiosJson from "./AxiosJson";
-import ScooterShop from './ScooterShop';
-import UseHooks from './UseHooks';
-import ConditionRender from './ConditionRender';
+import ConditionRender from "./ConditionRender";
+import ContextMind from "./ContextMind";
+import EventCounter from "./EventCouner";
+import ForwardBut from "./ForwardBut";
+import LifeCycleMedia from "./LifeCycleMedia";
+import logo from "./logo.svg";
+import MyContext from "./MyContext";
+import MyStateComp from "./MyStateComp";
+import ScooterShop from "./ScooterShop";
+import StateUp from "./StateUp";
+import UseHooks from "./UseHooks";
+import UserComp from "./UserComp";
 
 
 const withPage = (Component) => {
@@ -43,17 +46,18 @@ const EventCounters = () => (
 );
 const listComponents = [
   <Homepage />,
-  <AxiosJson/>,
+  <AxiosJson />,
   <ForwardBut />,
   <MyStateComp />,
   <EventCounters />,
   <UserComp name='Events Handling with HoC props.name' />,
   <ContextMind />,
-  <LifeCycleMedia/>,
-  <MyContext/>,
+  <LifeCycleMedia />,
+  <MyContext />,
   <ScooterShop />,
   <UseHooks arg={77} />,
-  <ConditionRender/>
+  <ConditionRender />,
+  <StateUp />,
 ];
 
 const getDisplayName = (WrappedComponent) => {
@@ -68,7 +72,7 @@ const Routing = () => {
     <div>
       <NavLink
         key={key}
-        activeStyle={{ fontWeight: 'bold' }}
+        activeStyle={{ fontWeight: "bold" }}
         to={"/" + i.type.name + "/"}>
         {i.type.name}
       </NavLink>
@@ -82,21 +86,21 @@ const Routing = () => {
         <h1>Components Feed</h1>
       </header>
       <div className='App'>
-      <BrowserRouter>
-        <nav>
-          <div className='App-menu'>{menu}</div>
-        </nav>
+        <BrowserRouter>
+          <nav>
+            <div className='App-menu'>{menu}</div>
+          </nav>
           <Switch>
-                      {listComponents.map((i, key) => (
+            {listComponents.map((i, key) => (
               <Route path={"/" + i.type.name + "/"} key={key}>
                 <h1>{i.type.name}</h1>
                 {i}
               </Route>
             ))}
           </Switch>
-          <Redirect from="/123" to="/HomePage/"></Redirect>
-          </BrowserRouter>
-        </div>
+          <Redirect from='/123' to='/HomePage/'></Redirect>
+        </BrowserRouter>
+      </div>
     </div>
   );
 };
