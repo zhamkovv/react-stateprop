@@ -13,6 +13,7 @@ import LifeCycleMedia from "./LifeCycleMedia";
 import AxiosJson from "./AxiosJson";
 import ScooterShop from './ScooterShop';
 import UseHooks from './UseHooks';
+import ConditionRender from './ConditionRender';
 
 
 const withPage = (Component) => {
@@ -51,7 +52,8 @@ const listComponents = [
   <LifeCycleMedia/>,
   <MyContext/>,
   <ScooterShop />,
-  <UseHooks arg={77} />
+  <UseHooks arg={77} />,
+  <ConditionRender />
 ];
 
 const getDisplayName = (WrappedComponent) => {
