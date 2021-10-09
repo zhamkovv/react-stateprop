@@ -12,6 +12,7 @@ import MyContext from "./MyContext";
 import LifeCycleMedia from "./LifeCycleMedia";
 import AxiosJson from "./AxiosJson";
 import ScooterShop from './ScooterShop';
+import UseHooks from './UseHooks';
 
 
 const withPage = (Component) => {
@@ -49,7 +50,8 @@ const listComponents = [
   <ContextMind />,
   <LifeCycleMedia/>,
   <MyContext/>,
-  <ScooterShop />
+  <ScooterShop />,
+  <UseHooks arg={77} />
 ];
 
 const getDisplayName = (WrappedComponent) => {
