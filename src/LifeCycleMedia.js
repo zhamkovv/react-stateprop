@@ -7,8 +7,8 @@ class LifeCycleMedia extends React.Component {
     console.log('constructor');
   }
 static getDerivedStateFromProps(state,props) {
-  console.log('getDerivedStateFromProps()')
-  return [...state, ...props]
+  console.log('getDerivedStateFromProps()');
+  return {...state, ...props}
 } 
   componentDidMount() {
     console.log('componentidMount ()');
@@ -17,8 +17,8 @@ static getDerivedStateFromProps(state,props) {
         ? "desktop"
         : "mobile";
       if (type !== this.state.type) {
-        this.setState((prevState) => { 
-          console.log(prevState); 
+        this.setState((nextState) => { 
+          console.log(nextState); 
           return { type }
         });
       }
