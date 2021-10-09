@@ -104,12 +104,9 @@ class ConditionRender extends Component {
             value={this.state.searchQuery}
             onChange={this.setSearch}
           />
-                    <ColorCondition />
+          <ColorCondition />
         </div>
-        <div className='App-content2'>
-
-          {fdata}
-        </div>
+        <div className='App-content2'>{fdata}</div>
       </div>
     );
   }
