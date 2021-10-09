@@ -53,7 +53,7 @@ const listComponents = [
   <MyContext/>,
   <ScooterShop />,
   <UseHooks arg={77} />,
-  <ConditionRender />
+  <ConditionRender/>
 ];
 
 const getDisplayName = (WrappedComponent) => {
