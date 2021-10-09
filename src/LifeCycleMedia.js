@@ -4,9 +4,14 @@ class LifeCycleMedia extends React.Component {
   constructor(props) {
     super(props);
     this.state = { type: "desktop" };
+    console.log('constructor');
   }
-
+static getDerivedStateFromProps(state,props) {
+  console.log('getDerivedStateFromProps()')
+  return [...state, ...props]
+} 
   componentDidMount() {
+    console.log('componentidMount ()');
     const checkMediaQuery = () => {
       const type = window.matchMedia("(min-width: 1021px)").matches
         ? "desktop"
@@ -24,6 +29,7 @@ class LifeCycleMedia extends React.Component {
   }
 
   render() {
+    console.log('render');
     return <><span>{this.state.type}</span> this.props.children;</>
   }
 }
