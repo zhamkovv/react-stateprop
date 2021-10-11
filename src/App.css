@@ -67,7 +67,7 @@ label {
 .App-content {
   background-color: #282c34;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 
   grid-column-gap: 2em;
   grid-row-gap: 1em;
@@ -92,10 +92,25 @@ padding: 1em;
   flex-direction: column;
   align-items: right;
   justify-content: left;
-  color: white;
+  color: #748992;
   text-align: left;
 }
 
 .News h2 {
   color: #61dafb;
+}
+
+
+.logoP {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.ant-card-meta-description {
+  margin-top: -14px;
+  font-size: 10pt;
 }
