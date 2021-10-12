@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import { AuthContext } from "../AuthGit";
 import { Button } from "antd";
 import { GithubOutlined } from "@ant-design/icons";
-// eslint-disable-next-line 
 var token;
 export default function Login() {
   const { state, dispatch } = useContext(AuthContext);
@@ -21,58 +20,83 @@ export default function Login() {
       window.history.pushState({}, null, newUrl[0]);
       setData({ ...data, isLoading: true });
 
-      const requestData = {
-        client_id: '9abf3f859cae4e342f7c',
-        redirect_uri: 'http://localhost:3000/login',
-        client_secret: '1d4fda97aeeb51b5e056009a329bb5fddbec5fe7',
-        code: newUrl[1],
-      };
-      console.log(JSON.stringify(requestData));
+      const code = newUrl[1];
+
+      console.log(code);
       // const proxy_url = state.proxy_url;
 
       // Use code parameter and other parameters to make POST request to proxy_server
-      fetch(`https://github.com/login/oauth/access_token`, {
-        method: "POST",
-        body: requestData,
-      })
-        .then((response) => {console.log(response.text()); return response.text()})
-        .then((paramsString) => {
-          let params = new URLSearchParams(paramsString);
-          const access_token = params.get("access_token");
-          // token = access_token;
-          // localStorage.setItem("token", JSON.stringify(access_token));
-          // console.log(access_token);
-          // Request to return data of a user that has been authenticated
-          return fetch(`https://api.github.com/user`, {
-            mode: "no-cors",
-            credentials: "include",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Content-type": "application/json",
-              Accept: "text/json",
-              Authorization: `token ${access_token}`,
-            },
-          });
-        })
-        .then((response) => response.json())
+      fetch(
+        `https://github.com/login/oauth/access_token?client_id=${client_id}&client_secret=1d4fda97aeeb51b5e056009a329bb5fddbec5fe7&code=${code}&redirect_uri=http://localhost:3000/login`,
+        // {
+        //   method: "POST",
+        //   mode: "no-cors",
+        //   headers: {
+        //      "Credentials": "include",
+        //      "Access-Control-Allow-Origin": "*",
+        //     // "Accept": "application/json",
+        //   },
+        // }
+      )
+      .then(function(response) {  
+        return response.text();  
+      })  
+      .then(function(text) {  
+        console.log('Request successful', text);  
+      })  
+      .catch(function(error) {  
+        console.log('Request failed', error)  
+      });
+      //   .then((response) => response.text())
+      //   .then((data) => {console.log(data);})
+      
+        // .then((response) => {
+        //   console.log(response.headers.get("Content-Type"));
+        //   console.log(response.headers.get("Date"));
+
+        //   console.log(response.status);
+        //   console.log(response.statusText);
+        //   console.log(response.type);
+        //   console.log(response.url);
+        // })
+        // .then((data) => console.log(data))
+        //       .then((response) => {
+        //         let params = new URLSearchParams(response);
+        //         const access_token = params.get("access_token");
+        //         // token = access_token;
+        //         // localStorage.setItem("token", JSON.stringify(access_token));
+        //  console.log(access_token);
+        //         // Request to return data of a user that has been authenticated
+        //         return fetch(`https://api.github.com/user`, {
+        //           mode: "no-cors",
+        //           credentials: "include",
+        //           headers: {
+        //             "Access-Control-Allow-Origin": "*",
+        //             "Content-type": "application/json",
+        //             "Accept": "application/json",
+        //             "Authorization": `Bearer ${access_token}`,
+        //           },
+        //         });
+        //       })
+        // .then((response) => response.json())
         // .then((response) => {
         //   return response.status(200).json(response);
         // })
         // .catch((error) => {
         //   return error.status(400).json(error);
         // })
-        .then((data) => {
-          dispatch({
-            type: "LOGIN",
-            payload: { user: data, isLoggedIn: true },
-          });
-        })
-        .catch((error) => {
-          setData({
-            isLoading: false,
-            errorMessage: "Sorry! Login failed",
-          });
-        });
+        // .then((data) => {
+        //   dispatch({
+        //     type: "LOGIN",
+        //     payload: { user: data, isLoggedIn: true },
+        //   });
+        // })
+        // .catch((error) => {
+        //   setData({
+        //     isLoading: false,
+        //     errorMessage: "Sorry! Login failed",
+        //   });
+        // });
     }
   }, [state, dispatch, data]);
 
@@ -87,7 +111,7 @@ export default function Login() {
         <Button
           type='dashed'
           icon={<GithubOutlined />}
-          href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
+          href={`https://github.com/login/oauth/authorize?scope=user,repo&client_id=9abf3f859cae4e342f7c&redirect_uri=http://localhost:3000/login`}
           onClick={() => {
             setData({ ...data, errorMessage: "" });
           }}
@@ -98,7 +122,7 @@ export default function Login() {
         <Button
           type='dashed'
           icon={<GithubOutlined />}
-          href={`https://github.com/login/oauth/authorize?scope=repo&client_id=${client_id}&redirect_uri=${redirect_uri}`}
+          href={`https://github.com/login/oauth/authorize?scope=user,repo&client_id=9abf3f859cae4e342f7c&redirect_uri=http://localhost:3000/login`}
           onClick={() => {
             setData({ ...data, errorMessage: "", isLoading: true });
           }}>
