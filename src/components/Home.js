@@ -1,16 +1,15 @@
-import React, { useContext } from "react";
-import { Redirect } from "react-router-dom";
 import {
-  DownOutlined,
   ExportOutlined,
   GithubOutlined,
-  MailOutlined,
+  MailOutlined
 } from "@ant-design/icons";
-import { Avatar, Card, Dropdown, Badge, Progress } from "antd";
-
+import { Avatar, Badge, Card, Dropdown, Progress } from "antd";
+import "antd/dist/antd.css";
+import React, { useContext } from "react";
+import { Redirect } from "react-router-dom";
 // import Styled from "styled-components";
 import { AuthContext } from "../AuthGit";
-import "antd/dist/antd.css";
+
 
 export default function Home() {
   const { state, dispatch } = useContext(AuthContext);
@@ -19,7 +18,15 @@ export default function Home() {
     return <Redirect to='/login' />;
   }
 
-  const { avatar_url, name, public_repos, followers, following,html_url,login, } = state.user;
+  const {
+    avatar_url,
+    name,
+    public_repos,
+    followers,
+    following,
+    html_url,
+    login,
+  } = state.user;
   console.log(state.access_token);
   console.log(state.user);
   const handleLogout = () => {
@@ -34,10 +41,10 @@ export default function Home() {
       className='ant-card-dark'
       style={{ width: 320, marginTop: 12 }}
       actions={[
-        <a target='_blank' href='mailto: zhamkov@gmail.com'>
+        <a href='mailto: zhamkov@gmail.com'>
           <MailOutlined key='mail' />
         </a>,
-        <a target='_blank' href={html_url}>
+        <a href={html_url}>
           <GithubOutlined key='github' />
         </a>,
         <ExportOutlined onClick={() => handleLogout()} key='exit' />,
@@ -55,7 +62,7 @@ export default function Home() {
           justifyContent: "space-between",
           paddingBottom: 8,
         }}>
-       <Progress
+        <Progress
           width={150}
           gapPosition='left'
           type='dashboard'
@@ -69,11 +76,11 @@ export default function Home() {
             justifyContent: "space-between",
           }}>
           <Progress
-          strokeColor='purple'
+            strokeColor='purple'
             width={70}
             type='circle'
             gapPosition='bottom'
-            percent={followers+50}
+            percent={followers + 50}
             format={(percent) => `${percent} Fans`}
           />
           <Progress
@@ -81,7 +88,7 @@ export default function Home() {
             type='circle'
             gapPosition='right'
             width={70}
-            percent={following+25}
+            percent={following + 25}
             format={(percent) => `${percent} Idols`}
             status='exception'
           />
@@ -93,7 +100,10 @@ export default function Home() {
   );
   return (
     <Dropdown overlay={<Content />}>
-      <a className='ant-dropdown-link' onClick={(e) => e.preventDefault()}>
+      <a
+        href='/#'
+        className='ant-dropdown-link'
+        onClick={(e) => e.preventDefault()}>
         {login} &nbsp;
         <Badge size='small' count={public_repos}>
           <Avatar src={avatar_url} />

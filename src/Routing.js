@@ -11,13 +11,8 @@ import {
 import { Layout, Menu } from "antd";
 import "antd/dist/antd.css";
 import React from "react";
-import {
-  BrowserRouter,
-  NavLink,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
+import AuthGit from "./AuthGit";
 // import "./App.css";
 import AxiosJson from "./AxiosJson";
 import ConditionRender from "./ConditionRender";
@@ -31,9 +26,6 @@ import ScooterShop from "./ScooterShop";
 import StateUp from "./StateUp";
 import UseHooks from "./UseHooks";
 import UserComp from "./UserComp";
-import AuthGit from "./AuthGit";
-import Home from "./components/Home";
-import Login from "./components/Login";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -67,7 +59,7 @@ const listComponents = [
 
 const Routing = () => {
   const menu = listComponents.map((i, key) => (
-    <Menu.Item key={key}>
+    <Menu.Item key={key + 3}>
       <NavLink to={"/" + i.type.name + "/"}>{i.type.name}</NavLink>
     </Menu.Item>
   ));
@@ -118,8 +110,10 @@ const Routing = () => {
         </nav>
         <Switch>
           <Layout className='site-layout' style={{ marginLeft: 200 }}>
-            <Header className='site-layout-background' style={{ paddingRight: 24, textAlign: "right" }}>
-            <AuthGit />
+            <Header
+              className='site-layout-background'
+              style={{ paddingRight: 24, textAlign: "right" }}>
+              <AuthGit />
             </Header>
             <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
               <div
@@ -131,10 +125,8 @@ const Routing = () => {
                     {i}
                   </Route>
                 ))}
-
                 <br />
                 Really
-                
                 <br />
                 ...
                 <br />

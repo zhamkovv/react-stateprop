@@ -1,11 +1,15 @@
 export const initialState = {
   isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")) || false,
-  token: JSON.parse(localStorage.getItem("token")) || null,
+  //token: JSON.parse(localStorage.getItem("token")),
   user: JSON.parse(localStorage.getItem("user")) || null,
-  client_id: process.env.REACT_APP_CLIENT_ID,
-  redirect_uri: process.env.REACT_APP_REDIRECT_URI,
-  client_secret: process.env.REACT_APP_CLIENT_SECRET,
-  proxy_url: process.env.REACT_APP_PROXY_URL
+  client_id: '9abf3f859cae4e342f7c',
+  redirect_uri: 'http://localhost:3000/login',
+  // client_secret: '1d4fda97aeeb51b5e056009a329bb5fddbec5fe7',
+  // proxy_url: 'https://github.com/login/oauth/access_token'
+  // REACT_APP_CLIENT_ID=9abf3f859cae4e342f7c
+  // REACT_APP_CLIENT_SECRET=e07aadd540ac3e23c7c534d808d174302b21ce33
+  // REACT_APP_REDIRECT_URI=/login
+  // REACT_APP_PROXY_URL=https://github.com/login/oauth/access_token
 };
 
 export const reducer = (state, action) => {
@@ -13,7 +17,7 @@ export const reducer = (state, action) => {
     case "LOGIN": {
       localStorage.setItem("isLoggedIn", JSON.stringify(action.payload.isLoggedIn))
       localStorage.setItem("user", JSON.stringify(action.payload.user))
-      // localStorage.setItem("token", JSON.stringify(action.payload.token))
+      //localStorage.setItem("token", JSON.stringify(action.payload.token))
       return {
         ...state,
         isLoggedIn: action.payload.isLoggedIn,
