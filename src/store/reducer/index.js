@@ -1,9 +1,9 @@
 export const initialState = {
   isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")) || false,
-  //token: JSON.parse(localStorage.getItem("token")),
+  token: JSON.parse(localStorage.getItem("token")) || null,
   user: JSON.parse(localStorage.getItem("user")) || null,
-  client_id: '9abf3f859cae4e342f7c',
-  redirect_uri: 'http://localhost:3000/login',
+  // client_id: '9abf3f859cae4e342f7c',
+  // redirect_uri: 'http://localhost:3000/login',
   // client_secret: '1d4fda97aeeb51b5e056009a329bb5fddbec5fe7',
   // proxy_url: 'https://github.com/login/oauth/access_token'
   // REACT_APP_CLIENT_ID=9abf3f859cae4e342f7c
@@ -17,21 +17,21 @@ export const reducer = (state, action) => {
     case "LOGIN": {
       localStorage.setItem("isLoggedIn", JSON.stringify(action.payload.isLoggedIn))
       localStorage.setItem("user", JSON.stringify(action.payload.user))
-      //localStorage.setItem("token", JSON.stringify(action.payload.token))
+       localStorage.setItem("token", JSON.stringify(action.payload.token))
       return {
         ...state,
         isLoggedIn: action.payload.isLoggedIn,
         user: action.payload.user,
-        // token: action.payload.token
+        token: action.payload.token,
       };
     }
     case "LOGOUT": {
       localStorage.clear()
       return {
-        ...state,
+        // ...state,
         isLoggedIn: false,
         user: null,
-        // token: null
+        token: null
       };
     }
     default:

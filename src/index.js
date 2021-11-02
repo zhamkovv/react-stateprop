@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-// import "./App.css";
-import Routing from "./Routing";
+// import "./index.css";
+import "./components/App.less";
+import App from "./App";
+import { AuthProvider } from "./AuthContext";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Routing />
-  </React.StrictMode>,
+
+ReactDOM.render(<AuthProvider><App /></AuthProvider>,
   document.getElementById("root")
 );
